@@ -27,7 +27,7 @@ const isGameOver = game => {
     return true;
   }
   if (
-    getWrongLetters(game.chosenWord, game.guessedLetters).length >
+    getWrongLetters(game.chosenWord, game.guessedLetters).length >=  // >= instead of > to stop 0 instead of -1 //
     game.maxGuesses
   ) {
     return true;

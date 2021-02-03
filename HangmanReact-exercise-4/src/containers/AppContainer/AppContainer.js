@@ -41,13 +41,17 @@ class AppContainer extends React.Component {
     this.setState(newState);
   };
 
+  //function was missing conditional to check if chosenLetter was in guessedLetters
   guessLetterHandler = event => {
-    const newGuessedLetters = [...this.state.guessedLetters];
-    newGuessedLetters.push(this.state.currentChosenLetter);
-    this.setState({
-      guessedLetters: newGuessedLetters,
-      currentChosenLetter: ""
-    });
+    const inputLetter = this.state.currentChosenLetter !== '';
+    if (inputLetter && !this.state.guessedLetters.includes(this.state.currentChosenLetter)) {
+      const newGuessedLetters = [...this.state.guessedLetters];
+      newGuessedLetters.push(this.state.currentChosenLetter);
+      this.setState({
+        guessedLetters: newGuessedLetters,
+      });
+    }
+    this.setState({ currentChosenLetter: "" })
     event.preventDefault();
   };
 
